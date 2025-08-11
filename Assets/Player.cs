@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         float direcao = Input.GetAxisRaw("Horizontal");
 
         // Aplica impulso horizontal se ainda não estiver na velocidade máxima
-        if (Mathf.Abs(rb.velocity.x) < velocidadeMaxima)
+        if (Mathf.Abs(rb.linearVelocity.x) < velocidadeMaxima)
         {
             rb.AddForce(Vector2.right * direcao * forcaMovimento, ForceMode2D.Impulse);
         }
