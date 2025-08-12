@@ -11,11 +11,17 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;//OBJ para verificar colisão com o chao
     public bool isGround = false;
 
+    //movimentação
     public float speed;
-
     public float run = 0.0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Pulo
+    public bool jump = false;
+    public float jumpForce;
+    public int numberJumps = 0;
+    public int maxJump = 2;
+
+ 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -26,19 +32,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGround = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("chao"));
+        playerAnimator.SetBool("IsGrounded", isGround);
+
         run = Input.GetAxisRaw("Horizontal");
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+            playerAnimator.SetBool("Jump", jump);
+        }
         TrocaAnim();
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            playerAnimator.SetBool("Jump", true);
-        }
-        playerAnimator.SetBool("Jump", false);
     }
 
     private void FixedUpdate()
     {
         MovePlayer(run);
+        if (jump)
+        {
+            PlayerJump();
+        }
     }
 
     void MovePlayer(float movimentoH)
@@ -55,8 +69,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void PlayerJump()
+    {
+        if (isGround){
+            playerRB.AddForce(new Vector2(0f, jumpForce));
+            isGround = false;
+        }
+        jump = false;
+    }
     void TrocaAnim()
     {
-        playerAnimator.SetBool("Walk", playerRB.linearVelocity.x != 0);
+        playerAnimator.SetBool("Walk", playerRB.linearVelocity.x != 0 && isGround);
+        playerAnimator.SetBool("Jump", !isGround);
     }
 }
