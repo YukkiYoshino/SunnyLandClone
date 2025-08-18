@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;//Controlar Animações
     private Rigidbody2D playerRB; //Controlar movimentação
     private SpriteRenderer playerSprites;
+    private GameController _GM;
 
     public Transform groundCheck;//OBJ para verificar colisão com o chao
     public bool isGround = false;
@@ -21,12 +22,14 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public int numberJumps = 0;
     public int maxJump = 2;
+    private float initialPos;
 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
         playerSprites = GetComponent<SpriteRenderer>();
+        _GM = FindAnyObjectByType(typeof(GameController)) as GameController;
     }
 
     // Update is called once per frame
@@ -39,14 +42,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            initialPos = playerRB.transform.position.y;
             jump = true;
             playerAnimator.SetBool("Jump", jump);
 
         }
         TrocaAnim();
-
-        //playerAnimator.SetFloat("EixoY", playerAnimator.transform.localPosition.y);
+        
+        playerAnimator.SetFloat("EixoY", playerRB.linearVelocityY);
     }
 
     private void FixedUpdate()
@@ -89,5 +92,16 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator.SetBool("Walk", playerRB.linearVelocity.x != 0 && isGround);
         playerAnimator.SetBool("Jump", !isGround);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "CENOURA":
+                _GM.Pontuacao(1);
+                Destroy(collision.gameObject);
+                break;
+        }
     }
 }
