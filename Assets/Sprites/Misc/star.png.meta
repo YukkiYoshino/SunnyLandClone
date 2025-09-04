@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,7 +130,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 26
+        width: 13
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -150,9 +150,9 @@ TextureImporter:
       name: star_1
       rect:
         serializedVersion: 2
-        x: 27
+        x: 13
         y: 0
-        width: 11
+        width: 13
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -172,9 +172,9 @@ TextureImporter:
       name: star_2
       rect:
         serializedVersion: 2
-        x: 42
+        x: 26
         y: 0
-        width: 7
+        width: 13
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,9 +194,9 @@ TextureImporter:
       name: star_3
       rect:
         serializedVersion: 2
-        x: 53
+        x: 39
         y: 0
-        width: 11
+        width: 13
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,7 +216,7 @@ TextureImporter:
       name: star_4
       rect:
         serializedVersion: 2
-        x: 65
+        x: 52
         y: 0
         width: 13
         height: 13
@@ -234,11 +234,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: star_5
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c85ba2780272f4388457f0755d3133
+      internalID: 1681114583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ce1d805622c65634bb447c1dce3569ca
     internalID: 0
     vertices: []
     indices: 
@@ -247,7 +269,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      star_0: 4815476061570213978
+      star_1: 3999761062471549324
+      star_2: -3497892727927865473
+      star_3: 6504763747683324272
+      star_4: -4570688628630608616
+      star_5: 1681114583
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

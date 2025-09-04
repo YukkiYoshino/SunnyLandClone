@@ -1,4 +1,5 @@
 using NUnit.Framework.Internal;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public int maxJump = 2;
     private float initialPos;
 
+    //atributos
+    int vida = 3;
+    bool invulneravel = false;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -102,6 +106,45 @@ public class PlayerController : MonoBehaviour
                 _GM.Pontuacao(1);
                 Destroy(collision.gameObject);
                 break;
+            case "ESTRELA":
+                _GM.ColetaItem("ESTRELA");
+                Destroy(collision.gameObject);
+                break;
+
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!invulneravel)
+        {
+            switch (collision.gameObject.tag)
+            {
+                case "OBSTACULO":
+                    invulneravel = true;
+                    playerRB.AddForce(new Vector2(0f, jumpForce));
+                    vida--;
+                    
+                    if (vida == 0)
+                    {
+                        _GM.FimJogo();
+                    }
+                    StartCoroutine("ivunerabilidade");
+                    _GM.SofrerDano(vida);
+                    break;
+            }
+        }
+        
+    }
+    IEnumerator ivunerabilidade()
+    {
+        for (float i = 0;i < 1;i+= 0.1f)
+        {
+            playerSprites.enabled = false;
+            yield return new WaitForSeconds(0.1f);
+            playerSprites.enabled = true;
+            yield return new WaitForSeconds(0.1f);
+        }
+        invulneravel = false;
+
     }
 }

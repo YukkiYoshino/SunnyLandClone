@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - CENOURA
+  - OBSTACULO
   layers:
   - Default
   - TransparentFX
