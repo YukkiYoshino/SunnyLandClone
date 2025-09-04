@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CENOURA
   - OBSTACULO
+  - ESTRELA
   layers:
   - Default
   - TransparentFX
