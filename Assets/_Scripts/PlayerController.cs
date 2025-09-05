@@ -6,27 +6,27 @@ using UnityEngine.Assertions.Must;
 public class PlayerController : MonoBehaviour
 {
 
-    private Animator playerAnimator;//Controlar Animações
-    private Rigidbody2D playerRB; //Controlar movimentação
-    private SpriteRenderer playerSprites;
-    private GameController _GM;
+    private Animator        playerAnimator;//Controlar Animações
+    private Rigidbody2D     playerRB; //Controlar movimentação
+    private SpriteRenderer  playerSprites;
+    private GameController  _GM;
 
-    public Transform groundCheck;//OBJ para verificar colisão com o chao
-    public bool isGround = false;
+    public Transform groundCheck; //OBJ para verificar colisão com o chao
+    public bool      isGround = false;
 
     //movimentação
     public float speed;
     public float run = 0.0f;
 
     //Pulo
-    public bool jump = false;
+    public bool  jump = false;
     public float jumpForce;
-    public int numberJumps = 0;
-    public int maxJump = 2;
+    public int   numberJumps = 0;
+    public int   maxJump = 2;
     private float initialPos;
 
     //atributos
-    int vida = 3;
+    int  vida = 3;
     bool invulneravel = false;
     void Start()
     {

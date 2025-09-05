@@ -7,19 +7,19 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private int pontos;
-    public TMP_Text txtPontos;
+    private int      pontos;
+    public  TMP_Text txtPontos;
 
-    private int qtdEstrelas;
-    public TMP_Text txtEstrelas;
+    private int      qtdEstrelas;
+    public  TMP_Text txtEstrelas;
 
     public Sprite[] imagensVidas;
-    public Image imagemVida;
+    public Image    imagemVida;
    
+    public  GameObject painelPause;
+    private bool    pausado = false;
+    private bool    fimJogo = false;
 
-    public GameObject painelPause;
-    private bool pausado = false;
-    private bool fimJogo = false;
     void Start()
     {
         painelPause.SetActive(false); // começa desligado
@@ -77,6 +77,10 @@ public class GameController : MonoBehaviour
     public void CarregarCenaPorNome(string nomeCena)
     {
         SceneManager.LoadScene(nomeCena);
+        if (pausado)
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     public void FecharJogo()
