@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IA_Bear : MonoBehaviour
+public class IA_Patrulha : MonoBehaviour
 {
 
     public Transform      enemy;
